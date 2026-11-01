@@ -1,0 +1,22 @@
+# Battery Operational and Imbalance Thresholds
+# Note: These are configurable demonstration thresholds.
+# In industrial BMS applications, thresholds vary based on cell chemistry (LCO, LFP, NMC) and C-rates.
+
+voltage_spread:
+  # Checked in order: CRITICAL first, then WARNING, else NORMAL
+  critical_v: 0.050    # 50 mV spread indicates severe cell divergence / potential defect
+  warning_v: 0.020     # 20 mV spread indicates developing cell imbalance
+
+cell_voltage_limits:
+  critical_high_v: 4.25
+  warning_high_v: 4.22
+  warning_low_v: 3.20
+  critical_low_v: 3.00
+
+temperature:
+  critical_high_c: 60.0 # Extreme thermal risk
+  warning_high_c: 45.0  # Elevated operating temperature
+  spread_critical_c: 10.0
+  spread_warning_c: 5.0
+
+stale_data_timeout_seconds: 10.0

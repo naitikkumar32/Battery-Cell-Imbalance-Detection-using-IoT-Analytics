@@ -1,0 +1,58 @@
+# Application Configuration
+app:
+  title: "Battery Cell Imbalance Detection Using IoT Analytics"
+  version: "1.0.0"
+  default_mode: "simulation" # simulation | hardware
+  data_interval_seconds: 2
+  log_level: "INFO"
+  log_file: "logs/battery_monitor.log"
+
+simulation:
+  default_pack_id: "PACK-01"
+  cell_count: 4              # 4S lithium-ion pack configuration
+  nominal_voltage: 3.70      # Nominal cell voltage in Volts
+  min_voltage: 3.00          # Cut-off cell voltage
+  max_voltage: 4.20          # Fully charged cell voltage
+  nominal_temperature: 28.5  # Ambient / normal cell temperature in deg C
+  noise_amplitude_v: 0.002   # Realistic Gaussian noise standard deviation (2 mV)
+  drift_step_v: 0.0005       # Subtle drift per step
+  scenarios:
+    - "normal"
+    - "imbalance"
+    - "overheating"
+    - "sensor_failure"
+    - "missing_data"
+
+mqtt:
+  default_host: "localhost"
+  default_port: 1883
+  tls_port: 8883
+  use_tls: false
+  topic: "battery/cells/data"
+  qos: 1
+  keepalive: 60
+  reconnect_delay_min: 1
+  reconnect_delay_max: 30
+
+database:
+  default_path: "data/battery.db"
+  backup_dir: "data/backups"
+  retention_days: 30
+
+ml:
+  model_dir: "models"
+  model_filename: "isolation_forest_model.joblib"
+  scaler_filename: "scaler.joblib"
+  contamination: 0.05
+  random_state: 42
+  features:
+    - "voltage_spread_mv"
+    - "max_voltage"
+    - "min_voltage"
+    - "mean_voltage"
+    - "max_temp"
+    - "temp_spread"
+
+alerts:
+  cooldown_seconds: 60
+  email_enabled: false

@@ -1,0 +1,16 @@
+# Battery Cell Imbalance Detection Using IoT Analytics
+# Requirements specification for Python 3.10 - 3.14+ on Windows
+
+numpy>=2.0.0
+pandas>=2.2.0
+scipy>=1.13.0
+scikit-learn>=1.5.0
+streamlit>=1.40.0
+paho-mqtt>=2.1.0
+pyyaml>=6.0.0
+pytest>=8.0.0
+bcrypt>=4.0.0
+python-dotenv>=1.0.0
+joblib>=1.4.0
+requests>=2.31.0
+plotly>=5.20.0
